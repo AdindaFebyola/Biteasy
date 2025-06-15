@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "360990830662",
+    "firebase_url": "https://projectakhir-914fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "projectakhir-914fe",
+    "storage_bucket": "projectakhir-914fe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360990830662:android:bec195b16c23c797c05a47",
+        "android_client_info": {
+          "package_name": "com.example.projectakhir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9DLCajNax72F3sSraOYqkrlRHXTrn0g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
