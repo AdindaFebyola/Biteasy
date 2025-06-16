@@ -1,7 +1,9 @@
 plugins {
+
     alias(libs.plugins.android.application)
     id 'com.google.gms.google-services'
 }
+
 
 android {
     namespace 'com.example.projectakhir'
@@ -31,6 +33,24 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+
+    // Library untuk Autentikasi (Login Email & Google)
+    implementation("com.google.firebase:firebase-auth")
+
+    // Library untuk Database Cloud Firestore (database modern dari Firebase)
+    implementation("com.google.firebase:firebase-firestore")
+    dependencies {
+        // ... dependensi lain (auth, firestore, dll)
+
+        // TAMBAHKAN ATAU PASTIKAN INI ADA
+        implementation("com.google.firebase:firebase-database")
+    }
+    // Library untuk Cloud Storage (menyimpan file seperti gambar bukti transfer)
+    implementation("com.google.firebase:firebase-storage")
+
+    // Library khusus untuk Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation libs.appcompat
     implementation libs.material
     implementation libs.material.v1100

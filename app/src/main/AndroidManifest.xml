@@ -72,6 +72,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".FinancialReportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EditLaporanActivity"
+            android:exported="false" />
 
     </application>
 

@@ -8,6 +8,13 @@
         <item>Dibatalkan</item>
     </string-array>
 
+
+        <string-array name="kategori_array">
+            <item>Daily Package</item>
+            <item>Event Package</item>
+            <!-- Tambahkan kategori lain jika ada -->
+        </string-array>
+
     <!-- Tambahan dari activity_edit_menu.xml -->
     <string name="back_button_desc">Tombol Kembali</string>
     <string name="daily_package_title">Daily Package</string>
@@ -17,6 +24,7 @@
     <string name="price_per_portion_message">Harga tertera untuk 1 porsi</string>
     <string name="delivery_estimation_message">Pesan antar - estimasi tiba 25 min</string>
     <string name="add_new_menu_desc">Tambah Menu Baru</string>
+    <string name="add_menu_title">Tambah Menu Baru</string>
 
     <string name="package_image_desc">Gambar Paket</string>
     <string name="menu_name_placeholder">Nama Menu</string>

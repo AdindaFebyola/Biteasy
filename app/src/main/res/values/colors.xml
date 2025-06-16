@@ -14,4 +14,77 @@
     <color name="price_green">#388E3C</color>
     <color name="icon_edit_tint">#607D8B</color>
     <color name="icon_delete_tint">#F44336</color>
+
+    <!-- Primary Colors -->
+    <color name="background_primary">#F8FAFC</color>
+    <color name="surface_primary">#FFFFFF</color>
+    <color name="surface_secondary">#F1F5F9</color>
+
+    <!-- Accent Colors -->
+    <color name="accent_primary">#3B82F6</color>
+    <color name="accent_primary_dark">#2563EB</color>
+    <color name="accent_secondary">#10B981</color>
+    <color name="accent_tertiary">#F59E0B</color>
+
+    <color name="md_theme_primary">#006494</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#CAE6FF</color>
+    <color name="md_theme_onPrimaryContainer">#001E30</color>
+
+    <color name="md_theme_secondary">#50606F</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+
+    <color name="md_theme_background">#F8F9FC</color>
+    <color name="md_theme_onBackground">#191C1E</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+    <color name="md_theme_onSurface">#191C1E</color>
+    <color name="md_theme_surfaceVariant">#DDE3EA</color>
+    <color name="md_theme_onSurfaceVariant">#41474D</color>
+
+    <color name="md_theme_outline">#72787E</color>
+
+    <color name="green_success">#4CAF50</color>
+    <!-- Button Colors -->
+    <color name="button_primary">#3B82F6</color>
+    <color name="button_primary_pressed">#2563EB</color>
+    <color name="button_secondary">#10B981</color>
+    <color name="button_secondary_pressed">#059669</color>
+    <color name="button_danger">#EF4444</color>
+    <color name="button_danger_pressed">#DC2626</color>
+
+    <!-- Status Colors -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    <color name="info">#3B82F6</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#667EEA</color>
+    <color name="gradient_end">#764BA2</color>
+    <color name="biru_utama">#3171C4</color>
+    <color name="biru_muda_bg">#CDE6F0</color>
+
+
+    <color name="abu_abu_teks">#8A8A8A</color>
+    <color name="hijau">#4BAF5A</color>
+    <!-- Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_border">#E2E8F0</color>
+    <color name="abu_abu_teks_netral">#6E6E6E</color>
+    <color name="abu_abu_ripple">#D1D1D1</color>
+    <!-- Input Colors -->
+    <color name="input_background">#F8FAFC</color>
+    <color name="input_border">#D1D5DB</color>
+    <color name="input_border_focused">#3B82F6</color>
+
+    <!-- Shadow Colors -->
+    <color name="shadow_light">#1A000000</color>
+    <color name="shadow_medium">#33000000</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="background_primary_dark">#0F172A</color>
+    <color name="surface_primary_dark">#1E293B</color>
+    <color name="surface_secondary_dark">#334155</color>
+    <color name="text_primary_dark">#F1F5F9</color>
+    <color name="text_secondary_dark">#CBD5E1</color>
 </resources>
