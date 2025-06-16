@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="teal">#84A98C</color>
-    <color name="abu">#A8A8A8</color>
-    <color name="biruTua">#2F6DC9</color>
-    <color name="biruMuda">#D3EDF9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="info_card_background">#CDE6F0</color>
+    <color name="info_header_background">#2196F3</color>
+    <color name="biruTua">#2196F3</color>
+    <color name="biruMuda">#CDE6F0</color>
+
+    <color name="text_dark_grey">#212121</color>
+    <color name="text_medium_grey">#757575</color>
+    <color name="light_grey_background">#757575</color>
+    <color name="price_green">#388E3C</color>
+    <color name="icon_edit_tint">#607D8B</color>
+    <color name="icon_delete_tint">#F44336</color>
 </resources>
