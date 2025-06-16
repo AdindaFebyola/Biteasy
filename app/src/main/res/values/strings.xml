@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">ProjectAkhir</string>
+
+    <string-array name="order_status_array">
+        <item>Menunggu Konfirmasi</item>
+        <item>Diproses</item>
+        <item>Selesai</item>
+        <item>Dibatalkan</item>
+    </string-array>
+
+    <!-- Tambahan dari activity_edit_menu.xml -->
+    <string name="back_button_desc">Tombol Kembali</string>
+    <string name="daily_package_title">Daily Package</string>
+    <string name="location_icon_desc">Ikon Lokasi</string>
+    <string name="confirm_address_message">Pastikan alamat penerima sudah benar!</string>
+    <string name="delivery_icon_desc">Ikon Pengiriman</string>
+    <string name="price_per_portion_message">Harga tertera untuk 1 porsi</string>
+    <string name="delivery_estimation_message">Pesan antar - estimasi tiba 25 min</string>
+    <string name="add_new_menu_desc">Tambah Menu Baru</string>
+
+    <string name="package_image_desc">Gambar Paket</string>
+    <string name="menu_name_placeholder">Nama Menu</string>
+    <string name="menu_description_placeholder">Deskripsi makanan/minuman</string>
+    <string name="menu_price_placeholder">Rp xx.xxx/pax</string>
+    <string name="edit_icon_desc">Edit Item</string>
+    <string name="delete_icon_desc">Hapus Item</string>
 </resources>

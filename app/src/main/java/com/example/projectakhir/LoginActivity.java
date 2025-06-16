@@ -51,8 +51,12 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(LoginActivity.this, "Login Berhasil! Selamat datang, " + user.getEmail(), Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                // Opsional: Simpan display name jika Anda mengaturnya saat registrasi
+                                // String displayName = user.getDisplayName();
+                                // Toast.makeText(LoginActivity.this, "Login Berhasil! Selamat datang, " + (displayName != null ? displayName : user.getEmail()), Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(LoginActivity.this, "Login Berhasil!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class); // UBAH INI
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -74,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Login sebagai Tamu Berhasil!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class); // UBAH INI
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -90,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(intent);
             finish();
         }

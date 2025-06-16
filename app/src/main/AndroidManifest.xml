@@ -26,9 +26,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectAkhir"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".EventPackageActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DetailMenuActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TambahPackageActivity"
+            android:exported="false" />
+
+        <!-- Dashboard Activity -->
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" /> <!-- Ini harus false karena LoginActivity adalah launcher -->
+
+        <!-- Activities from DailyCathering - Pastikan path paketnya benar -->
+        <activity android:name=".activity.DailyPackageActivity"
+            android:exported="false" />
+        <activity android:name=".activity.AddMenuActivity" android:exported="false" />
+        <activity android:name=".activity.EditMenuActivity" android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,23 +72,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetailMenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TambahPackageActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>
