@@ -63,6 +63,22 @@
         <activity android:name=".activity.AddMenuActivity" android:exported="false" />
         <activity android:name=".activity.EditMenuActivity" android:exported="false" />
 
+        <!-- Manajemen Pesanan Activity -->
+        <activity
+            android:name=".ManajemenPesananActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Form Pesanan Activity -->
+        <activity android:name=".FormPesananActivity" />
+
+        <!-- Edit Pesanan Activity -->
+        <activity android:name=".EditPesananActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
