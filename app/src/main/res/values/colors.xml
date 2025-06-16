@@ -14,4 +14,9 @@
     <color name="price_green">#388E3C</color>
     <color name="icon_edit_tint">#607D8B</color>
     <color name="icon_delete_tint">#F44336</color>
+
+    <color name="status_baru">#2196F3</color>
+    <color name="status_diproses">#FF9800</color>
+    <color name="status_selesai">#4CAF50</color>
+    <color name="status_dibatalkan">#F44336</color>
 </resources>
