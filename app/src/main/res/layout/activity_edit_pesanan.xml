@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:clipToPadding="false"
+    android:padding="16dp"
+    tools:context=".EditPesananActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="8dp">
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="Back"
+                android:padding="4dp"
+                android:src="@drawable/ic_arrow_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#000000" />
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Pesanan"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ivLogout"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="Logout"
+                android:focusable="true"
+                android:src="@drawable/ic_logout"
+                app:tint="#000000" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="#E0E0E0" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Gambar Pesanan:"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/ivGambarPreviewEdit"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#E0E0E0"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_launcher_background" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPilihGaleriEdit"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Pilih dari Galeri"
+                android:textSize="12sp"
+                android:textColor="#4CAF50"
+                android:background="@drawable/bg_button_outline_green"
+                android:layout_marginEnd="8dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAmbilKameraEdit"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Ambil dari Kamera"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bg_button_green"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Pemesan:"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <EditText
+            android:id="@+id/etNama"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input_rounded"
+            android:hint="Masukkan Nama Pemesan"
+            android:paddingHorizontal="12dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu yang Dipesan:"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <EditText
+            android:id="@+id/etMenu"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input_rounded"
+            android:hint="Masukkan Menu yang Dipesan"
+            android:paddingHorizontal="12dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Harga:"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <EditText
+            android:id="@+id/etHarga"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input_rounded"
+            android:inputType="number"
+            android:hint="Masukkan Total Harga"
+            android:paddingHorizontal="12dp"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:boxStrokeWidth="0dp"
+            app:hintEnabled="false"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxBackgroundColor="@android:color/transparent">
+            <AutoCompleteTextView
+                android:id="@+id/spinnerStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:inputType="none"
+                android:background="@drawable/bg_input_rounded"
+                android:hint="Pilih Status"
+                android:textColor="#444444"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveChanges"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_button_outline_green"
+            android:text="Simpan Perubahan"
+            android:textAllCaps="false"
+            android:textColor="#4CAF50"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</ScrollView>

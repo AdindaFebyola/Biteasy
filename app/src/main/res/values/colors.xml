@@ -15,6 +15,7 @@
     <color name="icon_edit_tint">#607D8B</color>
     <color name="icon_delete_tint">#F44336</color>
 
+<<<<<<< pio
     <!-- Primary Colors -->
     <color name="background_primary">#F8FAFC</color>
     <color name="surface_primary">#FFFFFF</color>
@@ -87,4 +88,10 @@
     <color name="surface_secondary_dark">#334155</color>
     <color name="text_primary_dark">#F1F5F9</color>
     <color name="text_secondary_dark">#CBD5E1</color>
+=======
+    <color name="status_baru">#2196F3</color>
+    <color name="status_diproses">#FF9800</color>
+    <color name="status_selesai">#4CAF50</color>
+    <color name="status_dibatalkan">#F44336</color>
+>>>>>>> main
 </resources>

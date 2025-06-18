@@ -35,6 +35,7 @@ public class DashboardActivity extends AppCompatActivity {
     private ImageView ivLogout;
 
     private CardView cardDailyPackage;
+<<<<<<< pio
     private CardView cardLaporan;
 
     private CardView cardEventPackage; // Deklarasi CardView untuk Event Package
@@ -44,6 +45,11 @@ public class DashboardActivity extends AppCompatActivity {
 // private CardView cardLaporan;
 
 
+=======
+    private CardView cardEventPackage;// Deklarasi CardView untuk Event Package
+    private CardView cardListPesanan;
+    // private CardView cardLaporan;
+>>>>>>> main
 
     private FirebaseAuth mAuth;
 
@@ -68,8 +74,13 @@ public class DashboardActivity extends AppCompatActivity {
         ivLogout = findViewById(R.id.ivLogout);
 
         cardDailyPackage = findViewById(R.id.card_daily_package);
+<<<<<<< pio
 
         cardEventPackage = findViewById(R.id.card_event_package); // Inisialisasi
+=======
+        cardEventPackage = findViewById(R.id.card_event_package);
+        cardListPesanan = findViewById(R.id.card_list_pesanan);
+>>>>>>> main
 
         cardLaporan = findViewById(R.id.card_laporan);
 
@@ -107,6 +118,13 @@ public class DashboardActivity extends AppCompatActivity {
             // Membuat Intent untuk membuka MainActivity (halaman laporan Anda)
             Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
             startActivity(intent);
+        });
+
+        cardListPesanan.setOnClickListener(v -> {
+            // Membuat Intent untuk membuka halaman Manajemen Pesanan Anda
+            Intent intent = new Intent(DashboardActivity.this, ManajemenPesananActivity.class);
+            startActivity(intent);
+            Toast.makeText(DashboardActivity.this, "Membuka Manajemen Pesanan", Toast.LENGTH_SHORT).show();
         });
 
 
