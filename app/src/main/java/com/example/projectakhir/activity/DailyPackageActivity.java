@@ -25,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-// Kelas ini mengimplementasikan OnItemActionListener dari MenuAdapter
 public class DailyPackageActivity extends AppCompatActivity implements MenuAdapter.OnItemActionListener {
 
     private static final String TAG = "DailyPackageActivity";
@@ -36,7 +35,7 @@ public class DailyPackageActivity extends AppCompatActivity implements MenuAdapt
     private TextView headerTitle;
 
     private List<MenuItem> menuList;
-    private MenuAdapter adapter; // Nama variabel adapter
+    private MenuAdapter adapter;
     private DatabaseReference databaseReference;
 
     @Override
@@ -44,22 +43,16 @@ public class DailyPackageActivity extends AppCompatActivity implements MenuAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_package);
 
-        // Inisialisasi Views - PASTIKAN ID SUDAH BENAR SESUAI XML
         recyclerView = findViewById(R.id.recycler_view_menu);
         fabAdd = findViewById(R.id.fab_add_menu);
         backButton = findViewById(R.id.iv_back_button);
         headerTitle = findViewById(R.id.headerTitle);
 
-        headerTitle.setText(R.string.daily_package_title); // Mengatur teks dari string resource
+        headerTitle.setText(R.string.daily_package_title);
 
         menuList = new ArrayList<>();
-        // >>>>>>> PERBAIKAN DI SINI <<<<<<<
-        // Teruskan 'this' sebagai listener karena DailyPackageActivity mengimplementasikan OnItemActionListener
-        adapter = new MenuAdapter(this, menuList, this); // Tambahkan 'this' sebagai argumen ketiga
-        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-        // adapter.setOnItemActionListener(this); // Baris ini tidak lagi diperlukan jika listener sudah diteruskan di konstruktor
-
+        adapter = new MenuAdapter(this, menuList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
@@ -109,15 +102,12 @@ public class DailyPackageActivity extends AppCompatActivity implements MenuAdapt
             }
         });
     }
-
-    // Implementasi metode dari MenuAdapter.OnItemActionListener
     @Override
     public void onEditClick(MenuItem item) {
         Toast.makeText(this, "Mengedit: " + item.getNama(), Toast.LENGTH_SHORT).show();
         Intent editIntent = new Intent(this, EditMenuActivity.class);
-        editIntent.putExtra("menu_item", item); // Kirim objek MenuItem (pastikan Serializable)
+        editIntent.putExtra("menu_item", item);
         editIntent.putExtra("menu_key", item.getKey());
-        // Tambahkan pengiriman data lainnya jika EditMenuActivity membutuhkan parameter terpisah
         editIntent.putExtra("menu_name", item.getNama());
         editIntent.putExtra("menu_description", item.getDeskripsi());
         editIntent.putExtra("menu_price", item.getHarga());
@@ -126,7 +116,7 @@ public class DailyPackageActivity extends AppCompatActivity implements MenuAdapt
     }
 
     @Override
-    public void onDeleteClick(MenuItem item, int position) { // Perhatikan: onDeleteClick di adapter punya 'position'
+    public void onDeleteClick(MenuItem item, int position) {
         if (item.getKey() != null) {
             databaseReference.child(item.getKey()).removeValue()
                     .addOnSuccessListener(aVoid -> {

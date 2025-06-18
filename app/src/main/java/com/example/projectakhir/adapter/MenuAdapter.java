@@ -1,4 +1,4 @@
-package com.example.projectakhir.adapter; // Pastikan package ini benar
+package com.example.projectakhir.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,36 +13,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide; // Jika Anda menggunakan Glide
+import com.bumptech.glide.Glide;
 import com.example.projectakhir.R;
-import com.example.projectakhir.model.MenuItem; // Pastikan ini mengacu pada model yang benar
+import com.example.projectakhir.model.MenuItem;
 
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
-    private final Context context; // Gunakan final jika tidak diubah setelah konstruktor
+    private final Context context;
     private List<MenuItem> menuList;
-    private OnItemActionListener listener; // Interface untuk klik edit/delete
-
-    // INTERFACE SAMA SEPERTI DI PackageAdapter
+    private OnItemActionListener listener;
     public interface OnItemActionListener {
-        void onEditClick(MenuItem item); // Mengirim objek MenuItem
-        void onDeleteClick(MenuItem item, int position); // Mengirim objek MenuItem dan posisinya
+        void onEditClick(MenuItem item);
+        void onDeleteClick(MenuItem item, int position);
     }
 
     public void setOnItemActionListener(OnItemActionListener listener) {
         this.listener = listener;
     }
 
-    // Ubah konstruktor agar menerima listener
     public MenuAdapter(Context context, List<MenuItem> menuList, OnItemActionListener listener) {
         this.context = context;
         this.menuList = menuList;
-        this.listener = listener; // Set listener di konstruktor
+        this.listener = listener;
     }
-
-    // Metode updateData() agar mirip PackageAdapter
     public void updateData(List<MenuItem> newMenuList) {
         this.menuList = newMenuList;
         notifyDataSetChanged();
@@ -58,8 +53,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         MenuItem menu = menuList.get(position);
-
-        // SESUAIKAN DENGAN NAMA VARIABEL BARU DI VIEWHOLDER
         holder.packageTitle.setText(menu.getNama());
         if (menu.getDeskripsi() != null && !menu.getDeskripsi().isEmpty()) {
             holder.packageDesc.setText("Pesanan: " + menu.getDeskripsi());
@@ -68,51 +61,38 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             holder.packageDesc.setVisibility(View.GONE);
         }
         holder.packagePrice.setText("Rp " + menu.getHarga());
-
-        // Load gambar (jika itu base64 string)
         if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
             try {
-                // Asumsi imageUrl adalah Base64 String seperti di TambahPackageActivity
                 byte[] decodedString = Base64.decode(menu.getImageUrl(), Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 Glide.with(context)
-                        .load(decodedByte) // Load Bitmap
+                        .load(decodedByte)
                         .placeholder(R.drawable.ic_image_placeholder)
-                        // .error(R.drawable.ic_image_error) // Pastikan drawable ini ada atau hapus baris ini
                         .centerCrop()
-                        .into(holder.packageImage); // SESUAIKAN DENGAN NAMA VARIABEL BARU
+                        .into(holder.packageImage);
             } catch (IllegalArgumentException e) {
-                // Jika bukan Base64 yang valid atau ada masalah dekode
-                e.printStackTrace(); // Penting untuk debugging
+                e.printStackTrace();
                 Glide.with(context)
-                        .load(R.drawable.ic_image_placeholder) // Tampilkan placeholder
+                        .load(R.drawable.ic_image_placeholder)
                         .centerCrop()
-                        .into(holder.packageImage); // SESUAIKAN DENGAN NAMA VARIABEL BARU
+                        .into(holder.packageImage);
             }
         } else {
-            holder.packageImage.setImageResource(R.drawable.ic_image_placeholder); // SESUAIKAN DENGAN NAMA VARIABEL BARU
+            holder.packageImage.setImageResource(R.drawable.ic_image_placeholder);
         }
-
-        // Set listeners untuk tombol edit dan delete
-        holder.ivEditItem.setOnClickListener(v -> { // SESUAIKAN DENGAN NAMA VARIABEL BARU
+        holder.ivEditItem.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onEditClick(menuList.get(holder.getAdapterPosition()));
             }
         });
 
-        holder.ivDeleteItem.setOnClickListener(v -> { // SESUAIKAN DENGAN NAMA VARIABEL BARU
+        holder.ivDeleteItem.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onDeleteClick(menuList.get(holder.getAdapterPosition()), holder.getAdapterPosition());
             }
         });
-
-        // Tambahan: Jika seluruh item bisa diklik untuk detail
         holder.itemView.setOnClickListener(v -> {
             if (listener != null && holder.getAdapterPosition() != RecyclerView.NO_POSITION) {
-                // Jika ada method onItemClick di listener, panggil di sini
-                // listener.onItemClick(menuList.get(holder.getAdapterPosition()));
-                // Karena Anda tidak punya onItemClick di OnItemActionListener Anda,
-                // baris ini mungkin tidak perlu atau perlu ditambahkan ke interface
             }
         });
     }
@@ -123,17 +103,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public static class MenuViewHolder extends RecyclerView.ViewHolder {
-        // Deklarasi variabel harus sesuai dengan ID di item_menu.xml
-        ImageView packageImage; // SESUAIKAN DENGAN ID: @id/packageImage
-        TextView packageTitle; // SESUAIKAN DENGAN ID: @id/packageTitle
-        TextView packageDesc; // SESUAIKAN DENGAN ID: @id/packageDesc
-        TextView packagePrice; // SESUAIKAN DENGAN ID: @id/packagePrice
-        ImageView ivEditItem; // SESUAIKAN DENGAN ID: @id/ivEditItem
-        ImageView ivDeleteItem; // SESUAIKAN DENGAN ID: @id/ivDeleteItem
+        ImageView packageImage;
+        TextView packageTitle;
+        TextView packageDesc;
+        TextView packagePrice;
+        ImageView ivEditItem;
+        ImageView ivDeleteItem;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Inisialisasi variabel dengan ID yang sesuai dari item_menu.xml
             packageImage = itemView.findViewById(R.id.packageImage);
             packageTitle = itemView.findViewById(R.id.packageTitle);
             packageDesc = itemView.findViewById(R.id.packageDesc);

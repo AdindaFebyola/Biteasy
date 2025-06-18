@@ -11,10 +11,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log; // Pastikan ini ada
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -25,7 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.projectakhir.R;
-import com.example.projectakhir.model.MenuItem; // Pastikan ini MenuItem yang sudah diupdate
+import com.example.projectakhir.model.MenuItem;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.bumptech.glide.Glide;
@@ -40,14 +41,16 @@ import java.util.Locale;
 
 public class AddMenuActivity extends AppCompatActivity {
 
-    // Sesuaikan ID dengan yang ada di activity_add_menu.xml Anda
-    EditText etNamaMenu, etDeskripsiMenu, etHargaMenu; // Sesuaikan dengan properti MenuItem yang baru
+    EditText etNamaMenu, etDeskripsiMenu, etHargaMenu;
     ImageView ivPreviewImage;
-    Button btnSelectImage, btnCaptureImage, btnBatal, btnTambah; // Pastikan ID ini ada di XML
+    Button btnSelectImage, btnCaptureImage, btnBatal, btnTambah;
+
+    private ImageView backButton;
+    private TextView headerTitle;
 
     private DatabaseReference databaseReference;
     private Uri imageUri;
-    private String currentPhotoPath; // Untuk menyimpan path sementara dari foto yang diambil
+    private String currentPhotoPath;
 
     // ActivityResultLaunchers
     private final ActivityResultLauncher<String> pickImageLauncher =
@@ -82,23 +85,28 @@ public class AddMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_menu); // Pastikan nama layout ini benar
+        setContentView(R.layout.activity_add_menu);
 
-        // Inisialisasi Views - PASTIKAN ID SUDAH BENAR SESUAI XML Anda
-        etNamaMenu = findViewById(R.id.et_nama_menu); // Contoh ID
-        etDeskripsiMenu = findViewById(R.id.et_deskripsi_menu); // Contoh ID
-        etHargaMenu = findViewById(R.id.et_harga_menu); // Contoh ID
-        ivPreviewImage = findViewById(R.id.iv_preview_image); // Contoh ID
-        btnSelectImage = findViewById(R.id.btn_select_image); // Contoh ID
-        btnCaptureImage = findViewById(R.id.btn_capture_image); // Contoh ID
-        btnBatal = findViewById(R.id.btn_batal); // Contoh ID
-        btnTambah = findViewById(R.id.btn_tambah); // Contoh ID
+        etNamaMenu = findViewById(R.id.et_nama_menu);
+        etDeskripsiMenu = findViewById(R.id.et_deskripsi_menu);
+        etHargaMenu = findViewById(R.id.et_harga_menu);
+        ivPreviewImage = findViewById(R.id.iv_preview_image);
+        btnSelectImage = findViewById(R.id.btn_select_image);
+        btnCaptureImage = findViewById(R.id.btn_capture_image);
+        btnBatal = findViewById(R.id.btn_batal);
+        btnTambah = findViewById(R.id.btn_tambah);
 
-        // Inisialisasi Firebase Database Reference
-        // Ini adalah path untuk daily menus
+        backButton = findViewById(R.id.iv_back_button_add_menu);
+        headerTitle = findViewById(R.id.tv_add_menu_title);
+
+        headerTitle.setText(R.string.add_menu_title);
+
+        backButton.setOnClickListener(v -> {
+            onBackPressed();
+        });
+
         databaseReference = FirebaseDatabase.getInstance().getReference("daily_menus");
 
-        // Set Listeners
         btnSelectImage.setOnClickListener(v -> {
             String permission;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -120,7 +128,7 @@ public class AddMenuActivity extends AppCompatActivity {
         btnTambah.setOnClickListener(v -> {
             String nama = etNamaMenu.getText().toString().trim();
             String deskripsi = etDeskripsiMenu.getText().toString().trim();
-            String harga = etHargaMenu.getText().toString().trim(); // Ambil sebagai String
+            String harga = etHargaMenu.getText().toString().trim();
 
             Log.d("AddMenuActivity", "Nama: " + nama);
             Log.d("AddMenuActivity", "Deskripsi: " + deskripsi);
@@ -131,7 +139,7 @@ public class AddMenuActivity extends AppCompatActivity {
             } else if (imageUri == null) {
                 Toast.makeText(this, "Mohon pilih atau ambil gambar terlebih dahulu.", Toast.LENGTH_SHORT).show();
             } else {
-                convertImageToBase64AndSave(nama, deskripsi, harga); // Kirim semua data
+                convertImageToBase64AndSave(nama, deskripsi, harga);
             }
         });
     }
@@ -179,21 +187,20 @@ public class AddMenuActivity extends AppCompatActivity {
                 ".jpg",
                 storageDir
         );
-        currentPhotoPath = image.getAbsolutePath(); // Simpan path sementara
+        currentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
 
     private void convertImageToBase64AndSave(String nama, String deskripsi, String harga) {
         try {
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream); // Kompresi gambar 70%
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream.toByteArray();
             String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-            saveMenuData(nama, deskripsi, harga, base64Image); // Panggil fungsi save data
+            saveMenuData(nama, deskripsi, harga, base64Image);
 
         } catch (IOException e) {
             Toast.makeText(this, "Gagal mengkonversi gambar ke Base64: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -202,16 +209,16 @@ public class AddMenuActivity extends AppCompatActivity {
     }
 
     private void saveMenuData(String nama, String deskripsi, String harga, String base64Image) {
-        String menuId = databaseReference.push().getKey(); // Dapatkan unique key dari Firebase
+        String menuId = databaseReference.push().getKey();
 
         if (menuId != null) {
-            // MENGGUNAKAN KONSTRUKTOR YANG BARU DENGAN FIELD YANG SAMA
-            MenuItem newMenu = new MenuItem(menuId, nama, deskripsi, harga, base64Image); // SESUAI DENGAN MenuItem.java
+
+            MenuItem newMenu = new MenuItem(menuId, nama, deskripsi, harga, base64Image);
 
             databaseReference.child(menuId).setValue(newMenu)
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(AddMenuActivity.this, "Menu berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
-                        finish(); // Kembali ke DailyPackageActivity
+                        finish();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(AddMenuActivity.this, "Gagal menambahkan menu ke database: " + e.getMessage(), Toast.LENGTH_LONG).show();

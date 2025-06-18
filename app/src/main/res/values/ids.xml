@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvGuestLogin" type="id" />
+    <item name="btnGoogleSignIn" type="id" />
+    <item name="btnLogin" type="id" />
+    <item name="btnRegister" type="id" />
+    <item name="etPasswordLogin" type="id" />
+    <item name="etEmailLogin" type="id" />
+</resources>

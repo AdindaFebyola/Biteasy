@@ -8,12 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:360990830662:android:bec195b16c23c797c05a47",
+        "mobilesdk_app_id": "1:360990830662:android:bffe4ff4f07eb5cac05a47",
         "android_client_info": {
-          "package_name": "com.example.projectakhir"
+          "package_name": "com.example.biteasy"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "360990830662-2tblhih2aociei56k0v8ogbd0scev186.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC9DLCajNax72F3sSraOYqkrlRHXTrn0g0"
@@ -21,7 +26,49 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360990830662-2tblhih2aociei56k0v8ogbd0scev186.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360990830662:android:bec195b16c23c797c05a47",
+        "android_client_info": {
+          "package_name": "com.example.projectakhir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360990830662-55545dtd89adj77o57u6o7b2euvf0c8g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectakhir",
+            "certificate_hash": "dbe0ebd0573683a84a8220967f5b4168ef5835cc"
+          }
+        },
+        {
+          "client_id": "360990830662-2tblhih2aociei56k0v8ogbd0scev186.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9DLCajNax72F3sSraOYqkrlRHXTrn0g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360990830662-2tblhih2aociei56k0v8ogbd0scev186.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
