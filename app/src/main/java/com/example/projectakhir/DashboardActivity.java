@@ -35,21 +35,14 @@ public class DashboardActivity extends AppCompatActivity {
     private ImageView ivLogout;
 
     private CardView cardDailyPackage;
-<<<<<<< pio
+
     private CardView cardLaporan;
 
     private CardView cardEventPackage; // Deklarasi CardView untuk Event Package
 
-// private CardView cardListPesanan;
 
-// private CardView cardLaporan;
-
-
-=======
-    private CardView cardEventPackage;// Deklarasi CardView untuk Event Package
     private CardView cardListPesanan;
     // private CardView cardLaporan;
->>>>>>> main
 
     private FirebaseAuth mAuth;
 
@@ -74,13 +67,10 @@ public class DashboardActivity extends AppCompatActivity {
         ivLogout = findViewById(R.id.ivLogout);
 
         cardDailyPackage = findViewById(R.id.card_daily_package);
-<<<<<<< pio
 
-        cardEventPackage = findViewById(R.id.card_event_package); // Inisialisasi
-=======
         cardEventPackage = findViewById(R.id.card_event_package);
+
         cardListPesanan = findViewById(R.id.card_list_pesanan);
->>>>>>> main
 
         cardLaporan = findViewById(R.id.card_laporan);
 
