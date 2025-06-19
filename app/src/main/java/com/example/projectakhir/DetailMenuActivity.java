@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -105,9 +104,10 @@ public class DetailMenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             packageId = intent.getStringExtra("packageId");
-            String nama = intent.getStringExtra("title");
-            String deskripsi = intent.getStringExtra("description");
-            String harga = intent.getStringExtra("price");
+            // KOREKSI: Gunakan kunci yang sesuai dengan yang dikirim dari MainActivity
+            String nama = intent.getStringExtra("nama");
+            String deskripsi = intent.getStringExtra("deskripsi");
+            String harga = intent.getStringExtra("harga");
             existingBase64Image = intent.getStringExtra("imageUrl");
 
             etNamaPackageDetail.setText(nama);
@@ -160,7 +160,7 @@ public class DetailMenuActivity extends AppCompatActivity {
                 try {
                     Bitmap newBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), newImageUri);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    newBitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
                     byte[] imageBytes = byteArrayOutputStream.toByteArray();
                     finalImageUrlBase64 = Base64.encodeToString(imageBytes, Base64.DEFAULT);
                 } catch (IOException e) {
@@ -224,6 +224,7 @@ public class DetailMenuActivity extends AppCompatActivity {
     private void updatePackageData(String id, String nama, String deskripsi, String harga, String imageUrlBase64) {
         if (id != null) {
             PackageItem updatedPackage = new PackageItem(id, nama, deskripsi, harga, imageUrlBase64);
+
             databaseReference.child(id).setValue(updatedPackage)
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(DetailMenuActivity.this, "Paket berhasil diperbarui!", Toast.LENGTH_SHORT).show();
